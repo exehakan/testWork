@@ -1,13 +1,35 @@
 <template>
   <div>
-    İndex Sayfasindasin<br/>
-    <router-link title="Hooo" to="/login">Login'e Git</router-link>
+    <pre>
+      {{ characters.info.pages }}
+    </pre>
+
+
   </div>
+
 
 </template>
 
 <script>
-export default {}
+import gql from 'graphql-tag'
+
+export default {
+
+  apollo: {
+    characters: gql`
+        query getCharacters {
+                characters{
+                  info{
+                      pages
+                      next
+                      prev
+                    }
+                  }        }
+    `
+  }
+
+
+}
 </script>
 
 <style>
